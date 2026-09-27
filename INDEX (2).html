@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="ml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ശ്രീ വിജയശാന്തി പാരമ്പര്യ സിദ്ധ വൈദ്യശാല | Sri Vijayashanthi Siddha Vaidyasala</title>
+    
+    <!-- Google Fonts for Malayalam & English -->
+    <link href="https://fonts.googleapis.com/css2?family=Manjari:wght@400;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-green: #1b4332;
+            --accent-gold: #d4af37;
+            --light-gold: #f4e285;
+            --bg-cream: #fdfbf7;
+            --dark-text: #2b2d42;
+            --card-bg: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Manjari', 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-cream);
+            color: var(--dark-text);
+            line-height: 1.6;
+        }
+
+        /* Navigation Header */
+        header {
+            background-color: var(--primary-green);
+            border-bottom: 3px solid var(--accent-gold);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0.8rem 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo h1 {
+            color: var(--accent-gold);
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        .logo p {
+            color: #fff;
+            font-size: 0.8rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 1rem;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--accent-gold);
+        }
+
+        /* Hero Banner */
+        .hero {
+            background: linear-gradient(rgba(27, 67, 50, 0.85), rgba(27, 67, 50, 0.85)), 
+                        url('https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1200&q=80') center/cover;
+            color: white;
+            text-align: center;
+            padding: 4rem 1rem;
+        }
+
+        .hero h2 {
+            color: var(--accent-gold);
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero p {
+            font-size: 1rem;
+            max-width: 700px;
+            margin: 0 auto 1.5rem auto;
+        }
+
+        .btn-gold {
+            background-color: var(--accent-gold);
+            color: var(--primary-green);
+            padding: 0.7rem 1.5rem;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .btn-gold:hover {
+            background-color: var(--light-gold);
+        }
+
+        /* Container & Cards */
+        .container {
+            max-width: 1100px;
+            margin: 3rem auto;
+            padding: 0 1rem;
+        }
+
+        .section-title {
+            text-align: center;
+            color: var(--primary-green);
+            font-size: 1.8rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--accent-gold);
+            font-size: 1.05rem;
+            margin-bottom: 2rem;
+            font-weight: 600;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid #e2d9c8;
+            border-top: 4px solid var(--accent-gold);
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .card h3 {
+            color: var(--primary-green);
+            margin-bottom: 0.3rem;
+        }
+
+        .card h4 {
+            color: var(--accent-gold);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Product Cards */
+        .product-card {
+            background: var(--card-bg);
+            border: 1px solid #e2d9c8;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .product-details {
+            padding: 1.2rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .product-price {
+            font-size: 1.2rem;
+            color: var(--primary-green);
+            font-weight: bold;
+            margin: 0.5rem 0;
+        }
+
+        .qty-picker {
+            display: flex;
+            align-items: center;
+            margin: 0.8rem 0;
+            gap: 0.5rem;
+        }
+
+        .qty-picker input {
+            width: 60px;
+            padding: 0.4rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        /* WhatsApp Form Area */
+        .order-box {
+            background: #f4efe6;
+            border: 2px dashed var(--accent-gold);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.3rem;
+            font-weight: bold;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 0.6rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        /* Floating WhatsApp Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #25d366;
+            color: white;
+            padding: 0.8rem 1.2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            z-index: 1000;
+        }
+
+        .contact-flex {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .contact-info, .contact-map {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        footer {
+            background-color: var(--primary-green);
+            color: white;
+            text-align: center;
+            padding: 1.5rem 1rem;
+            margin-top: 3rem;
+            border-top: 3px solid var(--accent-gold);
+        }
+
+        @media (max-width: 768px) {
+            .header-container { flex-direction: column; text-align: center; }
+            nav { margin-top: 0.8rem; }
+            nav a { margin: 0 0.4rem; font-size: 0.8rem; }
+            .hero h2 { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Floating WhatsApp Action Button -->
+    <a href="https://wa.me/919778150115" class="whatsapp-float" target="_blank">
+        💬 WhatsApp Contact
+    </a>
+
+    <!-- Navigation Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <h1>ശ്രീ വിജയശാന്തി പാരമ്പര്യ സിദ്ധ വൈദ്യശാല</h1>
+                <p>Sri Vijayashanthi Traditional Siddha Vaidyasala</p>
+            </div>
+            <nav>
+                <a href="#home">ഹോം</a>
+                <a href="#about">ഞങ്ങളെക്കുറിച്ച്</a>
+                <a href="#treatments">ചികിത്സകൾ</a>
+                <a href="#products">ഉൽപ്പന്നങ്ങൾ</a>
+                <a href="#contact">ബന്ധപ്പെടുക</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Home Banner -->
+    <section class="hero" id="home">
+        <h2>പാരമ്പര്യ സിദ്ധ & ആയുർവേദ രോഗശാന്തി</h2>
+        <p>Traditional Siddha & Ayurvedic Healing | Authentic Kerala Healthcare</p>
+        <p style="font-size: 0.95rem; margin-bottom: 1.5rem;">പ്രകൃതിദത്ത ആരോഗ്യവും ആധികാരികമായ ഔഷധസസ്യ പരിപാലനവും.</p>
+        <a href="#contact" class="btn-gold">ഒരു കൺസൾട്ടേഷൻ ബുക്ക് ചെയ്യുക (Book Consultation)</a>
+    </section>
+
+    <!-- About Section -->
+    <section class="container" id="about">
+        <h2 class="section-title">ഞങ്ങളെക്കുറിച്ച്</h2>
+        <div class="section-subtitle">About Us</div>
+        <div class="grid-3">
+            <div class="card">
+                <h3>ചരിത്രവും തത്ത്വചിന്തയും</h3>
+                <h4>History & Philosophy</h4>
+                <p>പാരമ്പര്യ ശാസ്ത്രതത്ത്വങ്ങളിൽ അധിഷ്ഠിതമായി പ്രകൃതിദത്ത ചികിത്സാരീതികളിലൂടെ സമഗ്രമായ ആരോഗ്യവും പൂർണ്ണ രോഗശാന്തിയും പ്രധാനം ചെയ്യുന്നു.</p>
+            </div>
+            <div class="card">
+                <h3>സിദ്ധ & ആയുർവേദ പൈതൃകം</h3>
+                <h4>Traditional Heritage</h4>
+                <p>കേരളത്തിന്റെ തനതായ വൈദ്യ പാരമ്പര്യം കാത്തുസൂക്ഷിച്ചുകൊണ്ട്, ശുദ്ധമായ ഔഷധസസ്യങ്ങൾ ഉപയോഗിച്ചുള്ള ചികിത്സയും ഔഷധ നിർമ്മാണവും.</p>
+            </div>
+            <div class="card">
+                <h3>വ്യക്തിഗത ചികിത്സാ സമീപനം</h3>
+                <h4>Personalized Care</h4>
+                <p>ഓരോ വ്യക്തിയുടെയും ശരീരപ്രകൃതിയും രോഗാവസ്ഥയും കൃത്യമായി വിശകലനം ചെയ്ത് നൽകുന്ന പ്രത്യേക ചികിത്സ പദ്ധതികൾ.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Treatments Section -->
+    <section class="container" id="treatments">
+        <h2 class="section-title">ഞങ്ങളുടെ ചികിത്സകൾ</h2>
+        <div class="section-subtitle">Treatments & Therapies</div>
+        <div class="grid-3">
+            <div class="card">
+                <h3>മർമ്മ തെറാപ്പി</h3>
+                <h4>Marma Therapy</h4>
+                <p>ശരീരത്തിലെ മർമ്മ സ്ഥാനങ്ങളെ ഉത്തേജിപ്പിച്ച് നാഡിഞരമ്പുകളുടെ പ്രവർത്തനം പുനരുജ്ജീവിപ്പിക്കുന്ന രീതി.</p>
+            </div>
+            <div class="card">
+                <h3>സിദ്ധ തെറാപ്പി</h3>
+                <h4>Siddha Therapy</h4>
+                <p>ശരീരത്തിലെ ദോഷങ്ങളെ ക്രമീകരിച്ച് രോഗപ്രതിരോധ ശേഷി വർദ്ധിപ്പിക്കുന്ന പാരമ്പര്യ രീതികൾ.</p>
+            </div>
+            <div class="card">
+                <h3>ആയുർവേദ തെറാപ്പി</h3>
+                <h4>Ayurvedic Therapy</h4>
+                <p>ആധികാരിക കേര തൈലങ്ങളും പ്രകൃതിദത്ത കൂട്ടുകളും ഉപയോഗിച്ചുള്ള സമഗ്ര ചികിത്സകൾ.</p>
+            </div>
+            <div class="card">
+                <h3>പഞ്ചകർമ്മ പിന്തുണ</h3>
+                <h4>Panchakarma Support</h4>
+                <p>ശരീരത്തെ ശുദ്ധീകരിക്കുന്നതിനും വിഷാംശങ്ങൾ പുറന്തള്ളുന്നതിനുമുള്ള പ്രകൃതിദത്ത തെറാപ്പികൾ.</p>
+            </div>
+            <div class="card">
+                <h3>വേദന മാനേജ്മെന്റ്</h3>
+                <h4>Pain Management</h4>
+                <p>സന്ധിവേദന, നടുവേദന, പേശീവേദനകൾ എന്നിവയ്ക്കുള്ള ഫലപ്രദമായ പ്രകൃതിദത്ത ചികിത്സ.</p>
+            </div>
+            <div class="card">
+                <h3>ഹെർബൽ വെൽനസ് പ്രോഗ്രാമുകൾ</h3>
+                <h4>Herbal Wellness Programs</h4>
+                <p>ദിനചര്യയിലും ആരോഗ്യത്തിലും ദീർഘകാല ക്ഷേമം ഉറപ്പാക്കുന്ന ജീവരീതി ഉപദേശങ്ങൾ.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Catalog & Order Form -->
+    <section class="container" id="products">
+        <h2 class="section-title">ഹെർബൽ ഫോർമുലേഷനുകളും വെൽനസ് ഉൽപ്പന്നങ്ങളും</h2>
+        <div class="section-subtitle">Herbal Products</div>
+
+        <div class="grid-3">
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=500&q=80" alt="കാർക്കൂന്തൽ ഹെർബൽ ഹെയർ ഓയിൽ" class="product-img">
+                <div class="product-details">
+                    <h3>കാർക്കൂന്തൽ ഹെർബൽ ഹെയർ ഓയിൽ</h3>
+                    <h4>Karkunthal Herbal Hair Oil</h4>
+                    <p>മുടി വളർച്ചയ്ക്കും തലയോട്ടിക്ക് തണുപ്പ് നൽകുന്നതിനും അനുയോജ്യമായ പാരമ്പര്യ തൈലം.</p>
+                    <div class="product-price">₹460</div>
+                    <div class="qty-picker">
+                        <label>അളവ് (Qty):</label>
+                        <input type="number" id="qty-hair-oil" value="0" min="0">
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1617897903246-719242758050?auto=format&fit=crop&w=500&q=80" alt="മുറിവെണ്ണ" class="product-img">
+                <div class="product-details">
+                    <h3>മുറിവെണ്ണ</h3>
+                    <h4>Murivenna</h4>
+                    <p>മുറിവുകൾ, വീക്കം, പേശീവേദന, ചതവുകൾ എന്നിവയ്ക്ക് പെട്ടെന്ന് ആശ്വാസം നൽകുന്ന കേര തൈലം.</p>
+                    <div class="product-price">₹400</div>
+                    <div class="qty-picker">
+                        <label>അളവ് (Qty):</label>
+                        <input type="number" id="qty-murivenna" value="0" min="0">
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1608571424266-edeb9bbefdec?auto=format&fit=crop&w=500&q=80" alt="Vajravalli Oil" class="product-img">
+                <div class="product-details">
+                    <h3>വജ്രവള്ളി ഓയിൽ</h3>
+                    <h4>Vajravalli Oil</h4>
+                    <p>എല്ലുകളുടെ ബലത്തിനും സന്ധിവേദന പരിഹാരത്തിനുമുള്ള പ്രത്യേക സിദ്ധ ഫോർമുലേഷൻ.</p>
+                    <div class="product-price">₹540</div>
+                    <div class="qty-picker">
+                        <label>അളവ് (Qty):</label>
+                        <input type="number" id="qty-vajravalli" value="0" min="0">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- WhatsApp Checkout Box -->
+        <div class="order-box">
+            <h3 style="color: var(--primary-green); margin-bottom: 1rem;">വാട്ട്‌സ്ആപ്പിൽ ഓർഡർ ചെയ്യുക (Order via WhatsApp)</h3>
+            <div class="form-group">
+                <label>പേര് (Name):</label>
+                <input type="text" id="cust-name" placeholder="നിങ്ങളുടെ പേര് ടൈപ്പ് ചെയ്യുക">
+            </div>
+            <div class="form-group">
+                <label>ഫോൺ നമ്പർ (Phone Number):</label>
+                <input type="tel" id="cust-phone" placeholder="ഫോൺ നമ്പർ നൽകുക">
+            </div>
+            <button onclick="sendWhatsAppOrder()" class="btn-gold" style="width: 100%; font-size: 1.1rem; background-color: #25d366; color: white;">
+                📲 വാട്ട്‌സ്ആപ്പിൽ ഓർഡർ ചെയ്യുക (Send Order)
+            </button>
+        </div>
+    </section>
+
+    <!-- Contact & Maps Section -->
+    <section class="container" id="contact">
+        <h2 class="section-title">ബന്ധപ്പെടുക</h2>
+        <div class="section-subtitle">Contact Us</div>
+
+        <div class="contact-flex">
+            <div class="contact-info card">
+                <h3>ശ്രീ വിജയശാന്തി പാരമ്പര്യ സിദ്ധ വൈദ്യശാല</h3>
+                <p style="margin-top: 0.5rem;"><strong>വിലാസം:</strong> വാഴപ്പള്ളി പി.ഒ., ചങ്ങനാശ്ശേരി, കോട്ടയം, കേരളം.</p>
+                <p style="margin-top: 0.5rem;"><strong>ഫോൺ & വാട്ട്‌സ്ആപ്പ്:</strong> +91 9778150115</p>
+                
+                <h4 style="margin-top: 1.5rem; color: var(--primary-green); font-size: 1.1rem;">കൺസൾട്ടേഷൻ ഫോം</h4>
+                <form onsubmit="alert('നിങ്ങളുടെ സന്ദേശം ലഭിച്ചു. ഞങ്ങൾ ഉടൻ തന്നെ ബന്ധപ്പെടാം!'); return false;" style="margin-top: 0.5rem;">
+                    <div class="form-group">
+                        <input type="text" placeholder="പേര് (Name)" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" placeholder="ഫോൺ നമ്പർ (Phone)" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea rows="3" placeholder="വിവരങ്ങൾ / ആവശ്യങ്ങൾ (Message)"></textarea>
+                    </div>
+                    <button type="submit" class="btn-gold">അയക്കുക (Submit)</button>
+                </form>
+            </div>
+
+            <!-- Embedded Google Map -->
+            <div class="contact-map card">
+                <h3>ഗൂഗിൾ മാപ്പ് (Location)</h3>
+                <div style="width: 100%; height: 320px; margin-top: 0.8rem;">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15740.354143285116!2d76.5312!3d9.4475!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b062f883f3630f9%3A0x86134a6fb7a7e8e5!2sVazhappally%2C%20Changanassery%2C%20Kerala!5e0!3m2!1sen!2sin!4v1680000000000!5m2!1sen!2sin" 
+                        width="100%" height="100%" style="border:0; border-radius: 5px;" allowfullscreen="" loading="lazy">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 ശ്രീ വിജയശാന്തി പാരമ്പര്യ സിദ്ധ വൈദ്യശാല. All Rights Reserved.</p>
+        <p style="font-size: 0.8rem; margin-top: 0.3rem;">വാഴപ്പള്ളി പി.ഒ., ചങ്ങനാശ്ശേരി, കോട്ടയം, കേരളം | Phone: +91 9778150115</p>
+    </footer>
+
+    <!-- WhatsApp Integration Script -->
+    <script>
+        function sendWhatsAppOrder() {
+            const name = document.getElementById('cust-name').value.trim();
+            const phone = document.getElementById('cust-phone').value.trim();
+
+            const qtyHairOil = parseInt(document.getElementById('qty-hair-oil').value) || 0;
+            const qtyMurivenna = parseInt(document.getElementById('qty-murivenna').value) || 0;
+            const qtyVajravalli = parseInt(document.getElementById('qty-vajravalli').value) || 0;
+
+            if (!name || !phone) {
+                alert('ദയവായി നിങ്ങളുടെ പേരും ഫോൺ നമ്പറും നൽകുക.');
+                return;
+            }
+
+            if (qtyHairOil === 0 && qtyMurivenna === 0 && qtyVajravalli === 0) {
+                alert('ദയവായി കുറഞ്ഞത് ഒരു ഉൽപ്പന്നത്തിന്റെ അളവ് (Quantity) എങ്കിലും നൽകുക.');
+                return;
+            }
+
+            let total = 0;
+            let itemsText = '';
+
+            if (qtyHairOil > 0) {
+                const price = qtyHairOil * 460;
+                total += price;
+                itemsText += '• കാർക്കൂന്തൽ ഹെർബൽ ഹെയർ ഓയിൽ (Karkunthal Herbal Hair Oil): ' + qtyHairOil + ' എണ്ണം - ₹' + price + '\n';
+            }
+            if (qtyMurivenna > 0) {
+                const price = qtyMurivenna * 400;
+                total += price;
+                itemsText += '• മുറിവെണ്ണ (Murivenna): ' + qtyMurivenna + ' എണ്ണം - ₹' + price + '\n';
+            }
+            if (qtyVajravalli > 0) {
+                const price = qtyVajravalli * 540;
+                total += price;
+                itemsText += '• വജ്രവള്ളി ഓയിൽ (Vajravalli Oil): ' + qtyVajravalli + ' എണ്ണം - ₹' + price + '\n';
+            }
+
+            let message = '*നമസ്കാരം, ശ്രീ വിജയശാന്തി സിദ്ധ വൈദ്യശാല*\n\n';
+            message += 'ഞാൻ ഒരു ഉൽപ്പന്ന ഓർഡർ നൽകാൻ ആഗ്രഹിക്കുന്നു:\n\n';
+            message += '*തിരഞ്ഞെടുത്ത ഉൽപ്പന്നങ്ങൾ (Products):*\n' + itemsText + '\n';
+            message += '*ആകെ തുക (Total Amount):* ₹' + total + '\n\n';
+            message += '*ഉപഭോക്താവിന്റെ വിവരങ്ങൾ (Customer Details):*\n';
+            message += 'പേര് (Name): ' + name + '\n';
+            message += 'ഫോൺ നമ്പർ (Phone): ' + phone + '\n';
+
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappURL = 'https://wa.me/919778150115?text=' + encodedMessage;
+
+            window.open(whatsappURL, '_blank');
+        }
+    </script>
+</body>
+</html>
